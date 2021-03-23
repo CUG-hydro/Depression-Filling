@@ -28,7 +28,7 @@ class CDEM
 {
 protected:
 	float* pDem;
-	int width, height;
+	long long int width, height;
 public:
 	CDEM()
 	{

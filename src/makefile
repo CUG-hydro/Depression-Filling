@@ -1,8 +1,8 @@
 IDIR =.
-CC=g++ `gdal-config --cflags` `gdal-config --libs`
+CC=g++
 
 #Compilation flags. Feel free to add optimization options here
-CFLAGS=-I$(IDIR) --std=c++11 -fpermissive -O3 
+CFLAGS=-I$(IDIR) --std=c++11 -fpermissive -O3 `gdal-config --cflags` `gdal-config --libs`
 
 ODIR=.
 
@@ -17,6 +17,7 @@ OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 
 $(ODIR)/%.o: %.cpp $(DEPS)
+	echo $(CFLAGS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 fill: $(OBJ)
